@@ -1,21 +1,19 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import './board.scss';
 import { CellComponent } from '../Cell/Cell';
 import { Cell } from '../../features/types/Cell';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
+import './board.scss';
+import { Position } from '../../features/types/Position';
 
-export const Board = () => {
+interface BoardProps {
+  position: Position;
+}
+
+export const Board: FC<BoardProps> = ({ position }) => {
   const board = useSelector((state: RootState) => state.board);
-  const [activeCell, setActiveCell] = useState<Cell | null>(null);
 
-  useEffect(() => {
-    setActiveCell(board[0][0]);
-  }, []);
-
-  useEffect(() => {
-    console.log(activeCell);
-  });
+  useEffect(() => {});
 
   return (
     <section className="board">
@@ -24,7 +22,8 @@ export const Board = () => {
           <CellComponent
             key={cell.x + cell.y}
             cell={cell}
-            isActive={cell.x === activeCell?.x && cell.y === activeCell.y}
+            isActive={cell.x === position?.x && cell.y === position.y}
+            isSelected={cell.x === position?.x && cell.y === position.y && position.selected}
           />
         )),
       )}
