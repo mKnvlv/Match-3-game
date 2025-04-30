@@ -1,7 +1,7 @@
-import { Color } from './Color';
+import { Gem } from './Gem';
 
 export type Cell = {
-  color: Color;
+  gem: Gem;
   x: number;
   y: number;
 };

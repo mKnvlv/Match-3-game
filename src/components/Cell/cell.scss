@@ -1,0 +1,23 @@
+.cell {
+  border-radius: 10%;
+  position: relative;
+
+  &.gem-red {
+    background: #ff5252;
+  }
+  &.gem-blue {
+    background: #4285f4;
+  }
+  &.gem-green {
+    background: #0f9d58;
+  }
+  &.gem-yellow {
+    background: #ffeb3b;
+  }
+  &.gem-purple {
+    background: #9c27b0;
+  }
+  &.active {
+    border: 4px solid black;
+  }
+}

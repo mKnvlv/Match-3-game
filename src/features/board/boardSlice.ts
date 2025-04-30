@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createBoard } from '../../utils/createBoard';
+import { createGrid } from '../../utils/createGrid';
 import { Cell } from '../types/Cell';
 
-const initialState: Cell[][] = createBoard(8);
+const initialState: Cell[][] = createGrid(8);
 
 export const boardSlice = createSlice({
   name: 'board',
