@@ -1,10 +1,9 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { CellComponent } from '../Cell/Cell';
-import { Cell } from '../../features/types/Cell';
-import { FC, useEffect, useState } from 'react';
-import './board.scss';
+import { FC, useEffect } from 'react';
 import { Position } from '../../features/types/Position';
+import './board.scss';
 
 interface BoardProps {
   position: Position;
@@ -17,15 +16,17 @@ export const Board: FC<BoardProps> = ({ position }) => {
 
   return (
     <section className="board">
-      {board.map((row) =>
-        row.map((cell) => (
-          <CellComponent
-            key={cell.x + cell.y}
-            cell={cell}
-            isActive={cell.x === position?.x && cell.y === position.y}
-            isSelected={cell.x === position?.x && cell.y === position.y && position.selected}
-          />
-        )),
+      {board.grid.map((row) =>
+        row.map((cell) => {
+          return (
+            <CellComponent
+              key={cell.x + cell.y}
+              cell={cell}
+              isActive={cell.x === position?.x && cell.y === position.y}
+              isSelected={cell.x === position?.x && cell.y === position.y && position.selected}
+            />
+          );
+        }),
       )}
     </section>
   );
