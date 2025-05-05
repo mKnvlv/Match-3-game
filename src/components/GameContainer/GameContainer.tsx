@@ -17,15 +17,17 @@ export const GameContainer: FC = () => {
     switch (event.key) {
       case 'ArrowDown':
         if (position.selected) {
-          dispatch(swipeDown());
-          return;
+          dispatch(swipeDown({ rowIndex: position.y, cellIndex: position.x }));
+          y = position.y === 7 ? 0 : position.y + 1;
+          return setPosition({ ...position, y, selected: false });
         }
         y = position.y === 7 ? 0 : position.y + 1;
         return setPosition({ ...position, y });
       case 'ArrowUp':
         if (position.selected) {
-          dispatch(swipeUp());
-          return;
+          dispatch(swipeUp({ rowIndex: position.y, cellIndex: position.x }));
+          y = position.y === 0 ? 7 : position.y - 1;
+          return setPosition({ ...position, y, selected: false });
         }
         y = position.y === 0 ? 7 : position.y - 1;
         return setPosition({ ...position, y });
